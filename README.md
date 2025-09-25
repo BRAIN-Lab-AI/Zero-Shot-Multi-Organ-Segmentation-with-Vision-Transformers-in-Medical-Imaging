@@ -37,16 +37,53 @@ Automated Dataset Curation: The pipeline can rapidly generate preliminary segmen
 A robust, zero-shot method offers a key advantage: generalization across diverse clinical sites with varying imaging protocols without requiring retraining. Furthermore, by incorporating calibration and uncertainty estimation, the pipeline supports a human-in-the-loop workflow by automatically flagging low-confidence slices for expert review, ensuring reliability in critical clinical decision-making.
 
 ## What is the paper trying to do, and what are you planning to do?
-What the paper does: The paper adapts a promptable ViT to medical imaging. Given a point or box, it produces a 2D mask per slice with strong class‑agnostic performance. The model is efficient to run and easy to steer. Key limitations are the reliance on user‑provided or simulated prompts, limited use of 3D context in slice‑wise decoding, and reduced reliability on thin/branching structures and small organs.
+What the paper does: 
+A. Summary of the Baseline Paper (What it does):
 
-What we will do: We will replicate the paper’s GitHub for inference and optionally fine‑tuning, and layer on three reproducible enhancements: (1) Automatic prompts via atlas‑guided search windows plus CT/MR heuristics (e.g., HU clipping, connected components, size/location filters) to eliminate manual boxes; (2) 2.5D input by stacking k neighboring slices as the 3 channels to inject local 3D context without architectural changes; (3) 3D assembly and refinement using inter‑slice tracking, morphological cleanup, and optional dense‑CRF/boundary smoothing to stabilize volumes and sharpen edges. 
-Results plan:
+Core Function: Adapts a promptable Vision Transformer (ViT) for medical image segmentation.
 
-Quantitative: Dice, NSD, ASD (mm), 95HD (mm), Sensitivity, Specificity, Accuracy. We also report latency, memory, and robustness to prompt noise.
+Key Strength: Produces high-quality, class-agnostic 2D masks from simple user-provided prompts (points or bounding boxes).
 
-Qualitative: overlay masks on slices, zoom‑ins at difficult borders, 3D surface renders, uncertainty maps, and a small failure gallery.
+Primary Limitations:
 
-We will not use labels to generate prompts. We will use labels only for evaluation.
+Relies on manual or simulated prompts, which is not scalable for full-volume segmentation.
+
+Processes each slice independently, leading to a lack of 3D consistency and slice-to-slice flickering.
+
+Shows reduced reliability on thin/branching structures and small organs due to the absence of topological constraints.
+
+What we will do:
+We will enhance this baseline into a complete zero-shot multi-organ segmentation pipeline through three key, reproducible enhancements:
+
+Enhancement 1: Automatic Prompt Generation
+
+Replace manual prompts with atlas-guided search windows to locate organs.
+
+Apply CT/MR-specific heuristics (e.g., HU thresholding, connected components analysis) to generate candidate bounding boxes or points.
+
+Implement label-free filtering based on size, location, and intensity consistency.
+
+Enhancement 2: Incorporation of 2.5D Context
+
+Stack k neighboring slices as input channels to the ViT encoder.
+
+Provide local volumetric cues to the model without changing the core architecture.
+
+Aim to improve boundary decisions and reduce inter-slice inconsistencies.
+
+Enhancement 3: 3D Assembly and Refinement
+
+Link 2D slice masks into coherent 3D volumes using inter-slice tracking (e.g., IoU-based).
+
+Apply post-processing refinement (e.g., morphological operations, boundary smoothing) to ensure anatomical plausibility and sharp edges.
+
+C. Evaluation Plan:
+
+Quantitative Metrics: Dice Similarity Coefficient (Dice), Normalized Surface Dice (NSD), Average Surface Distance (ASD), 95th percentile Hausdorff Distance (95HD).
+
+Qualitative Analysis: Mask overlays, 3D surface renderings, zoom-ins on complex boundaries, and visualizations of failure cases.
+
+Zero-Shot Protocol: A strict separation where no organ labels are used for training or prompt generation; labels are used exclusively for evaluation.
 
 
 # THE FOLLOWING IS SUPPOSED TO BE DONE LATER
