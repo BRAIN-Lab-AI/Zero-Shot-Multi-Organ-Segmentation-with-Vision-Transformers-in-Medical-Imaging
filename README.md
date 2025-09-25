@@ -11,13 +11,13 @@
 <strong>Foundation models</strong> like the Segment Anything Model (SAM) have introduced powerful, <strong>class-agnostic</strong> segmentation using <strong>Vision Transformers (ViTs)</strong>. These models can generate high-quality masks from simple prompts (e.g., a point or bounding box) without any task-specific training. However, directly applying these models to medical imaging presents significant challenges. Medical images, such as abdominal CT and MRI scans, are characterized by several factors that complicate segmentation:
 
 <ul>
-<li><u><strong>Complex Data Properties:</strong>strong></u> The images are typically grayscale, volumetric (3D), and exhibit high heterogeneity across different scanners and protocols.</li>
+<li><u><strong>Complex Data Properties:</strong></u> The images are typically grayscale, volumetric (3D), and exhibit high heterogeneity across different scanners and protocols.</li>
 
-<li><u><strong>Complex Anatomical Boundaries:</strong>strong></u> Multi-organ segmentation requires precise delineation of subtle and complex interfaces (e.g., the pancreas-duodenum boundary).</li>
+<li><u><strong>Complex Anatomical Boundaries:</strong></u> Multi-organ segmentation requires precise delineation of subtle and complex interfaces (e.g., the pancreas-duodenum boundary).</li>
 
 <li><u><strong>Topological Constraints:</strong>strong></u> Preserving the correct anatomical topology—preventing holes or disconnections in structures—is crucial for clinical validity.</li>
 </ul>
-We propose a <strong>zero-shot pipeline</strong>strong> that adapts promptable ViTs for multi-organ segmentation without any organ-specific training. Our method converts weak anatomical priors—derived from atlas registration and simple image heuristics—into <strong>automatic prompts</strong>strong>. To address the lack of 3D context in standard 2D ViTs, we introduce a <strong>2.5D input</strong>strong> by stacking adjacent slices, providing the model with local volumetric cues. Finally, we assemble the 2D segmentations into a 3D volume and apply <strong>topology-aware and boundary-aware refinement</strong>strong> to ensure anatomical plausibility and consistency. This training-free approach aims to reduce the reliance on large, annotated datasets while maintaining robust performance.
+We propose a <strong>zero-shot pipeline</strong> that adapts promptable ViTs for multi-organ segmentation without any organ-specific training. Our method converts weak anatomical priors—derived from atlas registration and simple image heuristics—into <strong>automatic prompts</strong>. To address the lack of 3D context in standard 2D ViTs, we introduce a <strong>2.5D input</strong> by stacking adjacent slices, providing the model with local volumetric cues. Finally, we assemble the 2D segmentations into a 3D volume and apply <strong>topology-aware and boundary-aware refinement</strong> to ensure anatomical plausibility and consistency. This training-free approach aims to reduce the reliance on large, annotated datasets while maintaining robust performance.
 <div align="justify">  </div>
 <img width="2000" height="1458" alt="image" src="https://github.com/user-attachments/assets/a6ad4f82-3bf8-4303-adf0-e4ad5677cfbf" />
 
