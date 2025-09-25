@@ -38,11 +38,11 @@ The goal of this project is to achieve accurate multi-organ segmentation in abdo
 ## Application Area and Project Domain
 This work is situated in the domain of medical image analysis, specifically targeting multi-organ segmentation in abdominal computed tomography (CT) and magnetic resonance imaging (MRI) scans. The primary clinical and research applications include:
 <ul>
-<li><u><strong>Surgical Planning and Navigation:</strong> Precise 3D models of organs like the liver and kidneys are critical for pre-operative planning and intra-operative guidance, helping to define resection margins and avoid critical structures.</li>
+<li><u><strong>Surgical Planning and Navigation:</strong></u> Precise 3D models of organs like the liver and kidneys are critical for pre-operative planning and intra-operative guidance, helping to define resection margins and avoid critical structures.</li>
 
-<li><u><strong>Disease Quantification and Follow-up:</strong> Accurate segmentation enables the volumetric measurement of organs for tracking tumor growth, assessing treatment response, and monitoring chronic conditions over time.</li>
+<li><u><strong>Disease Quantification and Follow-up:</strong></u> Accurate segmentation enables the volumetric measurement of organs for tracking tumor growth, assessing treatment response, and monitoring chronic conditions over time.</li>
 
-<li><u><strong>Automated Dataset Curation:</strong> The pipeline can rapidly generate preliminary segmentations for new datasets, significantly reducing the manual annotation burden required to train and validate fully supervised models.</li>
+<li><u><strong>Automated Dataset Curation:</strong></u> The pipeline can rapidly generate preliminary segmentations for new datasets, significantly reducing the manual annotation burden required to train and validate fully supervised models.</li>
 </ul>
 A robust, zero-shot method offers a key advantage: generalization across diverse clinical sites with varying imaging protocols without requiring retraining. Furthermore, by incorporating calibration and uncertainty estimation, the pipeline supports a human-in-the-loop workflow by automatically flagging low-confidence slices for expert review, ensuring reliability in critical clinical decision-making.
 <div align="justify">  </div>
@@ -52,14 +52,15 @@ A robust, zero-shot method offers a key advantage: generalization across diverse
 <div align="justify">
 
 ## What is the paper trying to do, and what are you planning to do?
-What the paper does: 
-A. Summary of the Baseline Paper (What it does):
+<strong>What the paper does:</strong>
+<ul>
+<li><u><strong>A. Summary of the Baseline Paper (What it does):</strong>
 
-Core Function: Adapts a promptable Vision Transformer (ViT) for medical image segmentation.
+<li><u><strong>Core Function:</strong> Adapts a promptable Vision Transformer (ViT) for medical image segmentation.
 
-Key Strength: Produces high-quality, class-agnostic 2D masks from simple user-provided prompts (points or bounding boxes).
+<li><u><strong>Key Strength:</strong> Produces high-quality, class-agnostic 2D masks from simple user-provided prompts (points or bounding boxes).
 
-Primary Limitations:
+<li><u><strong>Primary Limitations:</strong>
 
 Relies on manual or simulated prompts, which is not scalable for full-volume segmentation.
 
