@@ -68,10 +68,10 @@ Processes each slice independently, leading to a lack of 3D consistency and slic
 
 Shows reduced reliability on thin/branching structures and small organs due to the absence of topological constraints.
 
-What we will do:
+<strong>What we will do:</strong>
 We will enhance this baseline into a complete zero-shot multi-organ segmentation pipeline through three key, reproducible enhancements:
 
-Enhancement 1: Automatic Prompt Generation
+<strong>Enhancement 1:</strong> Automatic Prompt Generation
 
 Replace manual prompts with atlas-guided search windows to locate organs.
 
@@ -79,7 +79,7 @@ Apply CT/MR-specific heuristics (e.g., HU thresholding, connected components ana
 
 Implement label-free filtering based on size, location, and intensity consistency.
 
-Enhancement 2: Incorporation of 2.5D Context
+<strong>Enhancement 2:</strong> Incorporation of 2.5D Context
 
 Stack k neighboring slices as input channels to the ViT encoder.
 
@@ -87,19 +87,19 @@ Provide local volumetric cues to the model without changing the core architectur
 
 Aim to improve boundary decisions and reduce inter-slice inconsistencies.
 
-Enhancement 3: 3D Assembly and Refinement
+<strong>Enhancement 3:</strong> 3D Assembly and Refinement
 
 Link 2D slice masks into coherent 3D volumes using inter-slice tracking (e.g., IoU-based).
 
 Apply post-processing refinement (e.g., morphological operations, boundary smoothing) to ensure anatomical plausibility and sharp edges.
 
-C. Evaluation Plan:
+<strong>C. Evaluation Plan:</strong>
 
-Quantitative Metrics: Dice Similarity Coefficient (Dice), Normalized Surface Dice (NSD), Average Surface Distance (ASD), 95th percentile Hausdorff Distance (95HD).
+<strong>Quantitative Metrics:</strong> Dice Similarity Coefficient (Dice), Normalized Surface Dice (NSD), Average Surface Distance (ASD), 95th percentile Hausdorff Distance (95HD).
 
-Qualitative Analysis: Mask overlays, 3D surface renderings, zoom-ins on complex boundaries, and visualizations of failure cases.
+<strong>Qualitative Analysis:</strong> Mask overlays, 3D surface renderings, zoom-ins on complex boundaries, and visualizations of failure cases.
 
-Zero-Shot Protocol: A strict separation where no organ labels are used for training or prompt generation; labels are used exclusively for evaluation.
+<strong>Zero-Shot Protocol:</strong> A strict separation where no organ labels are used for training or prompt generation; labels are used exclusively for evaluation.
 
 <div align="justify">  </div>
 # THE FOLLOWING IS SUPPOSED TO BE DONE LATER
