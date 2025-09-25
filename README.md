@@ -8,7 +8,7 @@
 <div align="justify">
 
 ## Introduction
-Foundation models like the Segment Anything Model (SAM) have introduced powerful, class-agnostic segmentation using Vision Transformers (ViTs). These models can generate high-quality masks from simple prompts (e.g., a point or bounding box) without any task-specific training. However, directly applying these models to medical imaging presents significant challenges. Medical images, such as abdominal CT and MRI scans, are characterized by several factors that complicate segmentation:
+<strong>Foundation models</strong> like the Segment Anything Model (SAM) have introduced powerful, <strong>class-agnostic</strong> segmentation using <strong>Vision Transformers (ViTs)</strong>. These models can generate high-quality masks from simple prompts (e.g., a point or bounding box) without any task-specific training. However, directly applying these models to medical imaging presents significant challenges. Medical images, such as abdominal CT and MRI scans, are characterized by several factors that complicate segmentation:
 
 Complex Data Properties: The images are typically grayscale, volumetric (3D), and exhibit high heterogeneity across different scanners and protocols.
 
