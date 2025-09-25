@@ -11,11 +11,11 @@
 <strong>Foundation models</strong> like the Segment Anything Model (SAM) have introduced powerful, <strong>class-agnostic</strong> segmentation using <strong>Vision Transformers (ViTs)</strong>. These models can generate high-quality masks from simple prompts (e.g., a point or bounding box) without any task-specific training. However, directly applying these models to medical imaging presents significant challenges. Medical images, such as abdominal CT and MRI scans, are characterized by several factors that complicate segmentation:
 
 <ul>
-<li><u>Complex Data Properties:</u> The images are typically grayscale, volumetric (3D), and exhibit high heterogeneity across different scanners and protocols.</li>
+<li><u><strong>Complex Data Properties:</strong>strong></u> The images are typically grayscale, volumetric (3D), and exhibit high heterogeneity across different scanners and protocols.</li>
 
-<li><u>Complex Anatomical Boundaries:</u> Multi-organ segmentation requires precise delineation of subtle and complex interfaces (e.g., the pancreas-duodenum boundary).</li>
+<li><u><strong>Complex Anatomical Boundaries:</strong>strong></u> Multi-organ segmentation requires precise delineation of subtle and complex interfaces (e.g., the pancreas-duodenum boundary).</li>
 
-<li><u>Topological Constraints:</u> Preserving the correct anatomical topology—preventing holes or disconnections in structures—is crucial for clinical validity.</li>
+<li><u><strong>Topological Constraints:</strong>strong></u> Preserving the correct anatomical topology—preventing holes or disconnections in structures—is crucial for clinical validity.</li>
 </ul>
 We propose a <strong>zero-shot pipeline</strong>strong> that adapts promptable ViTs for multi-organ segmentation without any organ-specific training. Our method converts weak anatomical priors—derived from atlas registration and simple image heuristics—into <strong>automatic prompts</strong>strong>. To address the lack of 3D context in standard 2D ViTs, we introduce a <strong>2.5D input</strong>strong> by stacking adjacent slices, providing the model with local volumetric cues. Finally, we assemble the 2D segmentations into a 3D volume and apply <strong>topology-aware and boundary-aware refinement</strong>strong> to ensure anatomical plausibility and consistency. This training-free approach aims to reduce the reliance on large, annotated datasets while maintaining robust performance.
 <div align="justify">  </div>
@@ -25,12 +25,13 @@ We propose a <strong>zero-shot pipeline</strong>strong> that adapts promptable V
 
 ## Problem Statement
 The goal of this project is to achieve accurate multi-organ segmentation in abdominal CT/MR scans without using any organ-specific labels for training. This zero-shot objective is hindered by three primary problems:
+<ul>
+<li><u><strong>Problem 1:</u> Generating high-quality prompts automatically is difficult.</strong> Promptable models require accurate initial cues. In a zero-shot setting, without labeled data to learn from, we must rely on weak, unsupervised priors like atlas alignment and intensity heuristics, which can be noisy and imprecise.</li>
 
-Problem 1: Generating high-quality prompts automatically is difficult. Promptable models require accurate initial cues. In a zero-shot setting, without labeled data to learn from, we must rely on weak, unsupervised priors like atlas alignment and intensity heuristics, which can be noisy and imprecise.
+<li><u><strong>Problem 2:</u> Slice-wise 2D decoding lacks 3D consistency.</strong> Applying a ViT independently on each slice ignores the volumetric nature of the data. This leads to slice-to-slice flickering, incoherent 3D shapes, and failures at ambiguous boundaries where adjacent slice information is critical.</li>
 
-Problem 2: Slice-wise 2D decoding lacks 3D consistency. Applying a ViT independently on each slice ignores the volumetric nature of the data. This leads to slice-to-slice flickering, incoherent 3D shapes, and failures at ambiguous boundaries where adjacent slice information is critical.
-
-Problem 3: Thin structures and small organs suffer from topological errors. Standard segmentation losses do not explicitly preserve connectivity. Consequently, thin, branching structures like blood vessels or small organs like the pancreas are often fragmented or merged with adjacent tissues, violating anatomical plausibility.
+<li><u><strong>Problem 3:</u> Thin structures and small organs suffer from topological errors.</strong> Standard segmentation losses do not explicitly preserve connectivity. Consequently, thin, branching structures like blood vessels or small organs like the pancreas are often fragmented or merged with adjacent tissues, violating anatomical plausibility.</li>
+</ul>
 <div align="justify">  </div>
 <div align="justify">
 
