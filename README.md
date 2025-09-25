@@ -5,6 +5,7 @@
 - **Team:** Nuren Nafisa(g202427580)
 - **Supervisor Name:** Dr. Muzammil Behzad
 - **Affiliations:** SABIC, ARAMCO and KFUPM (write your institution name, and/or KFUPM)
+<div align="justify">
 
 ## Introduction
 Foundation models like the Segment Anything Model (SAM) have introduced powerful, class-agnostic segmentation using Vision Transformers (ViTs). These models can generate high-quality masks from simple prompts (e.g., a point or bounding box) without any task-specific training. However, directly applying these models to medical imaging presents significant challenges. Medical images, such as abdominal CT and MRI scans, are characterized by several factors that complicate segmentation:
@@ -17,6 +18,8 @@ Topological Constraints: Preserving the correct anatomical topology—preventing
 
 We propose a zero-shot pipeline that adapts promptable ViTs for multi-organ segmentation without any organ-specific training. Our method converts weak anatomical priors—derived from atlas registration and simple image heuristics—into automatic prompts. To address the lack of 3D context in standard 2D ViTs, we introduce a 2.5D input by stacking adjacent slices, providing the model with local volumetric cues. Finally, we assemble the 2D segmentations into a 3D volume and apply topology-aware and boundary-aware refinement to ensure anatomical plausibility and consistency. This training-free approach aims to reduce the reliance on large, annotated datasets while maintaining robust performance.
 <img width="2000" height="1458" alt="image" src="https://github.com/user-attachments/assets/a6ad4f82-3bf8-4303-adf0-e4ad5677cfbf" />
+<div align="justify">  </div>
+<div align="justify">
 
 ## Problem Statement
 The goal of this project is to achieve accurate multi-organ segmentation in abdominal CT/MR scans without using any organ-specific labels for training. This zero-shot objective is hindered by three primary problems:
@@ -26,6 +29,8 @@ Problem 1: Generating high-quality prompts automatically is difficult. Promptabl
 Problem 2: Slice-wise 2D decoding lacks 3D consistency. Applying a ViT independently on each slice ignores the volumetric nature of the data. This leads to slice-to-slice flickering, incoherent 3D shapes, and failures at ambiguous boundaries where adjacent slice information is critical.
 
 Problem 3: Thin structures and small organs suffer from topological errors. Standard segmentation losses do not explicitly preserve connectivity. Consequently, thin, branching structures like blood vessels or small organs like the pancreas are often fragmented or merged with adjacent tissues, violating anatomical plausibility.
+<div align="justify">  </div>
+<div align="justify">
 
 ## Application Area and Project Domain
 This work is situated in the domain of medical image analysis, specifically targeting multi-organ segmentation in abdominal computed tomography (CT) and magnetic resonance imaging (MRI) scans. The primary clinical and research applications include:
@@ -38,7 +43,8 @@ Automated Dataset Curation: The pipeline can rapidly generate preliminary segmen
 
 A robust, zero-shot method offers a key advantage: generalization across diverse clinical sites with varying imaging protocols without requiring retraining. Furthermore, by incorporating calibration and uncertainty estimation, the pipeline supports a human-in-the-loop workflow by automatically flagging low-confidence slices for expert review, ensuring reliability in critical clinical decision-making.
 <img width="2037" height="1254" alt="image" src="https://github.com/user-attachments/assets/588388b0-a501-49eb-9cdc-f00bd7ee2bb5" />
-
+<div align="justify">  </div>
+<div align="justify">
 
 ## What is the paper trying to do, and what are you planning to do?
 What the paper does: 
@@ -89,7 +95,7 @@ Qualitative Analysis: Mask overlays, 3D surface renderings, zoom-ins on complex 
 
 Zero-Shot Protocol: A strict separation where no organ labels are used for training or prompt generation; labels are used exclusively for evaluation.
 
-
+<div align="justify">  </div>
 # THE FOLLOWING IS SUPPOSED TO BE DONE LATER
 
 ### Project Documents
