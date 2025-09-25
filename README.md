@@ -59,9 +59,9 @@ A robust, zero-shot method offers a key advantage: generalization across diverse
 <strong>Core Function:</strong> Adapts a promptable Vision Transformer (ViT) for medical image segmentation.
 
 <strong>Key Strength:</strong>Produces high-quality, class-agnostic 2D masks from simple user-provided prompts (points or bounding boxes).
-<ul>
-<strong>Primary Limitations:</strong>
 
+<strong>Primary Limitations:</strong>
+<ul>
 <li><u><strong>Relies on manual or simulated prompts, which is not scalable for full-volume segmentation.</strong></u>li>
 
 <li><u><strong>Processes each slice independently, leading to a lack of 3D consistency and slice-to-slice flickering.</strong></u>li>
@@ -72,27 +72,27 @@ A robust, zero-shot method offers a key advantage: generalization across diverse
 We will enhance this baseline into a complete zero-shot multi-organ segmentation pipeline through three key, reproducible enhancements:
 
 <strong>Enhancement 1:</strong> Automatic Prompt Generation
+<ul>
+<li><u><strong>Replace manual prompts with atlas-guided search windows to locate organs.</strong></u>li>
 
-Replace manual prompts with atlas-guided search windows to locate organs.
+<li><u><strong>Apply CT/MR-specific heuristics (e.g., HU thresholding, connected components analysis) to generate candidate bounding boxes or points.</strong></u>li>
 
-Apply CT/MR-specific heuristics (e.g., HU thresholding, connected components analysis) to generate candidate bounding boxes or points.
-
-Implement label-free filtering based on size, location, and intensity consistency.
-
+<li><u><strong>Implement label-free filtering based on size, location, and intensity consistency.</strong></u>li>
+</ul>
 <strong>Enhancement 2:</strong> Incorporation of 2.5D Context
+<ul>
+<li><u><strong>Stack k neighboring slices as input channels to the ViT encoder.</strong></u>li>
 
-Stack k neighboring slices as input channels to the ViT encoder.
+<li><u><strong>Provide local volumetric cues to the model without changing the core architecture.</strong></u>li>
 
-Provide local volumetric cues to the model without changing the core architecture.
-
-Aim to improve boundary decisions and reduce inter-slice inconsistencies.
-
+<li><u><strong>Aim to improve boundary decisions and reduce inter-slice inconsistencies.</strong></u>li>
+</ul>
 <strong>Enhancement 3:</strong> 3D Assembly and Refinement
+<ul>
+<li><u><strong>Link 2D slice masks into coherent 3D volumes using inter-slice tracking (e.g., IoU-based).</strong></u>li>
 
-Link 2D slice masks into coherent 3D volumes using inter-slice tracking (e.g., IoU-based).
-
-Apply post-processing refinement (e.g., morphological operations, boundary smoothing) to ensure anatomical plausibility and sharp edges.
-
+<li><u><strong>Apply post-processing refinement (e.g., morphological operations, boundary smoothing) to ensure anatomical plausibility and sharp edges.</strong></u>li>
+</ul>
 <strong>Evaluation Plan:</strong>
 
 <strong>Quantitative Metrics:</strong> Dice Similarity Coefficient (Dice), Normalized Surface Dice (NSD), Average Surface Distance (ASD), 95th percentile Hausdorff Distance (95HD).
