@@ -16,6 +16,8 @@ Complex Anatomical Boundaries: Multi-organ segmentation requires precise delinea
 Topological Constraints: Preserving the correct anatomical topology—preventing holes or disconnections in structures—is crucial for clinical validity.
 
 We propose a zero-shot pipeline that adapts promptable ViTs for multi-organ segmentation without any organ-specific training. Our method converts weak anatomical priors—derived from atlas registration and simple image heuristics—into automatic prompts. To address the lack of 3D context in standard 2D ViTs, we introduce a 2.5D input by stacking adjacent slices, providing the model with local volumetric cues. Finally, we assemble the 2D segmentations into a 3D volume and apply topology-aware and boundary-aware refinement to ensure anatomical plausibility and consistency. This training-free approach aims to reduce the reliance on large, annotated datasets while maintaining robust performance.
+<img width="2000" height="1458" alt="image" src="https://github.com/user-attachments/assets/a6ad4f82-3bf8-4303-adf0-e4ad5677cfbf" />
+
 ## Problem Statement
 The goal of this project is to achieve accurate multi-organ segmentation in abdominal CT/MR scans without using any organ-specific labels for training. This zero-shot objective is hindered by three primary problems:
 
