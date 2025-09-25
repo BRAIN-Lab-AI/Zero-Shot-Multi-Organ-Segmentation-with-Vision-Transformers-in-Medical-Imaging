@@ -53,21 +53,21 @@ A robust, zero-shot method offers a key advantage: generalization across diverse
 
 ## What is the paper trying to do, and what are you planning to do?
 <strong>What the paper does:</strong>
+
+<strong>Summary of the Baseline Paper (What it does):</strong>
+
+<strong>Core Function:</strong> Adapts a promptable Vision Transformer (ViT) for medical image segmentation.
+
+<strong>Key Strength:</strong>Produces high-quality, class-agnostic 2D masks from simple user-provided prompts (points or bounding boxes).
+
+<strong>Primary Limitations:</strong>
 <ul>
-<li><u><strong></u>A. Summary of the Baseline Paper (What it does):</strong></li>
+<li><u><strong>Relies on manual or simulated prompts, which is not scalable for full-volume segmentation.</strong></u>li>
 
-<li><u><strong>Core Function:</strong></u> Adapts a promptable Vision Transformer (ViT) for medical image segmentation.</li>
+<li><u><strong>Processes each slice independently, leading to a lack of 3D consistency and slice-to-slice flickering.</strong></u>li>
 
-<li><u><strong>Key Strength:</strong></u> Produces high-quality, class-agnostic 2D masks from simple user-provided prompts (points or bounding boxes).</li>
-
-<li><u><strong>Primary Limitations:</strong></u>
-
-Relies on manual or simulated prompts, which is not scalable for full-volume segmentation.
-
-Processes each slice independently, leading to a lack of 3D consistency and slice-to-slice flickering.
-
-Shows reduced reliability on thin/branching structures and small organs due to the absence of topological constraints.
-
+<li><u><strong>Shows reduced reliability on thin/branching structures and small organs due to the absence of topological constraints.</strong></u>li>
+</ul>
 <strong>What we will do:</strong>
 We will enhance this baseline into a complete zero-shot multi-organ segmentation pipeline through three key, reproducible enhancements:
 
@@ -93,7 +93,7 @@ Link 2D slice masks into coherent 3D volumes using inter-slice tracking (e.g., I
 
 Apply post-processing refinement (e.g., morphological operations, boundary smoothing) to ensure anatomical plausibility and sharp edges.
 
-<strong>C. Evaluation Plan:</strong>
+<strong>Evaluation Plan:</strong>
 
 <strong>Quantitative Metrics:</strong> Dice Similarity Coefficient (Dice), Normalized Surface Dice (NSD), Average Surface Distance (ASD), 95th percentile Hausdorff Distance (95HD).
 
