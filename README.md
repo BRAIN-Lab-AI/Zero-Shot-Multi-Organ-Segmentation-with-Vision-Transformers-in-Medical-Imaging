@@ -17,13 +17,36 @@ Topological Constraints: Preserving the correct anatomical topology—preventing
 
 We propose a zero-shot pipeline that adapts promptable ViTs for multi-organ segmentation without any organ-specific training. Our method converts weak anatomical priors—derived from atlas registration and simple image heuristics—into automatic prompts. To address the lack of 3D context in standard 2D ViTs, we introduce a 2.5D input by stacking adjacent slices, providing the model with local volumetric cues. Finally, we assemble the 2D segmentations into a 3D volume and apply topology-aware and boundary-aware refinement to ensure anatomical plausibility and consistency. This training-free approach aims to reduce the reliance on large, annotated datasets while maintaining robust performance.
 ## Problem Statement
-Write 1-2 technical paragraphs (feel free to add images if you would like).
+The goal of this project is to achieve accurate multi-organ segmentation in abdominal CT/MR scans without using any organ-specific labels for training. This zero-shot objective is hindered by three primary problems:
+
+Problem 1: Generating high-quality prompts automatically is difficult. Promptable models require accurate initial cues. In a zero-shot setting, without labeled data to learn from, we must rely on weak, unsupervised priors like atlas alignment and intensity heuristics, which can be noisy and imprecise.
+
+Problem 2: Slice-wise 2D decoding lacks 3D consistency. Applying a ViT independently on each slice ignores the volumetric nature of the data. This leads to slice-to-slice flickering, incoherent 3D shapes, and failures at ambiguous boundaries where adjacent slice information is critical.
+
+Problem 3: Thin structures and small organs suffer from topological errors. Standard segmentation losses do not explicitly preserve connectivity. Consequently, thin, branching structures like blood vessels or small organs like the pancreas are often fragmented or merged with adjacent tissues, violating anatomical plausibility.
 
 ## Application Area and Project Domain
-Write 1-2 technical paragraphs (feel free to add images if you would like).
+This work is situated in the domain of medical image analysis, specifically targeting multi-organ segmentation in abdominal computed tomography (CT) and magnetic resonance imaging (MRI) scans. The primary clinical and research applications include:
+
+Surgical Planning and Navigation: Precise 3D models of organs like the liver and kidneys are critical for pre-operative planning and intra-operative guidance, helping to define resection margins and avoid critical structures.
+
+Disease Quantification and Follow-up: Accurate segmentation enables the volumetric measurement of organs for tracking tumor growth, assessing treatment response, and monitoring chronic conditions over time.
+
+Automated Dataset Curation: The pipeline can rapidly generate preliminary segmentations for new datasets, significantly reducing the manual annotation burden required to train and validate fully supervised models.
+
+A robust, zero-shot method offers a key advantage: generalization across diverse clinical sites with varying imaging protocols without requiring retraining. Furthermore, by incorporating calibration and uncertainty estimation, the pipeline supports a human-in-the-loop workflow by automatically flagging low-confidence slices for expert review, ensuring reliability in critical clinical decision-making.
 
 ## What is the paper trying to do, and what are you planning to do?
-Write 1-2 technical paragraphs (feel free to add images if you would like).
+What the paper does: The paper adapts a promptable ViT to medical imaging. Given a point or box, it produces a 2D mask per slice with strong class‑agnostic performance. The model is efficient to run and easy to steer. Key limitations are the reliance on user‑provided or simulated prompts, limited use of 3D context in slice‑wise decoding, and reduced reliability on thin/branching structures and small organs.
+
+What we will do: We will replicate the paper’s GitHub for inference and optionally fine‑tuning, and layer on three reproducible enhancements: (1) Automatic prompts via atlas‑guided search windows plus CT/MR heuristics (e.g., HU clipping, connected components, size/location filters) to eliminate manual boxes; (2) 2.5D input by stacking k neighboring slices as the 3 channels to inject local 3D context without architectural changes; (3) 3D assembly and refinement using inter‑slice tracking, morphological cleanup, and optional dense‑CRF/boundary smoothing to stabilize volumes and sharpen edges. 
+Results plan:
+
+Quantitative: Dice, NSD, ASD (mm), 95HD (mm), Sensitivity, Specificity, Accuracy. We also report latency, memory, and robustness to prompt noise.
+
+Qualitative: overlay masks on slices, zoom‑ins at difficult borders, 3D surface renders, uncertainty maps, and a small failure gallery.
+
+We will not use labels to generate prompts. We will use labels only for evaluation.
 
 
 # THE FOLLOWING IS SUPPOSED TO BE DONE LATER
