@@ -59,9 +59,9 @@ A robust, zero-shot method offers a key advantage: generalization across diverse
 <strong>Core Function:</strong> Adapts a promptable Vision Transformer (ViT) for medical image segmentation.
 
 <strong>Key Strength:</strong>Produces high-quality, class-agnostic 2D masks from simple user-provided prompts (points or bounding boxes).
-
-<strong>Primary Limitations:</strong>
 <ul>
+<strong>Primary Limitations:</strong>
+
 <li><u><strong>Relies on manual or simulated prompts, which is not scalable for full-volume segmentation.</strong></u>li>
 
 <li><u><strong>Processes each slice independently, leading to a lack of 3D consistency and slice-to-slice flickering.</strong></u>li>
