@@ -54,13 +54,13 @@ A robust, zero-shot method offers a key advantage: generalization across diverse
 ## What is the paper trying to do, and what are you planning to do?
 <strong>What the paper does:</strong>
 <ul>
-<li><u><strong>A. Summary of the Baseline Paper (What it does):</strong>
+<li><u><strong></u>A. Summary of the Baseline Paper (What it does):</strong></li>
 
-<li><u><strong>Core Function:</strong> Adapts a promptable Vision Transformer (ViT) for medical image segmentation.
+<li><u><strong>Core Function:</strong></u> Adapts a promptable Vision Transformer (ViT) for medical image segmentation.</li>
 
-<li><u><strong>Key Strength:</strong> Produces high-quality, class-agnostic 2D masks from simple user-provided prompts (points or bounding boxes).
+<li><u><strong>Key Strength:</strong></u> Produces high-quality, class-agnostic 2D masks from simple user-provided prompts (points or bounding boxes).</li>
 
-<li><u><strong>Primary Limitations:</strong>
+<li><u><strong>Primary Limitations:</strong></u>
 
 Relies on manual or simulated prompts, which is not scalable for full-volume segmentation.
 
