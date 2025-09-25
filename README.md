@@ -4,7 +4,7 @@
 ### Authors
 - **Team:** Nuren Nafisa(g202427580)
 - **Supervisor Name:** Dr. Muzammil Behzad
-- **Affiliations:** SABIC, ARAMCO and KFUPM (write your institution name, and/or KFUPM)
+- **Affiliations:** KFUPM 
 <div align="justify">
 
 ## Introduction
