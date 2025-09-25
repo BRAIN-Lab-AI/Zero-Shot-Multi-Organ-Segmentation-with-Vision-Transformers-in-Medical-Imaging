@@ -10,12 +10,13 @@
 ## Introduction
 <strong>Foundation models</strong> like the Segment Anything Model (SAM) have introduced powerful, <strong>class-agnostic</strong> segmentation using <strong>Vision Transformers (ViTs)</strong>. These models can generate high-quality masks from simple prompts (e.g., a point or bounding box) without any task-specific training. However, directly applying these models to medical imaging presents significant challenges. Medical images, such as abdominal CT and MRI scans, are characterized by several factors that complicate segmentation:
 
-Complex Data Properties: The images are typically grayscale, volumetric (3D), and exhibit high heterogeneity across different scanners and protocols.
+<ul>
+<li><u>Complex Data Properties:</u> The images are typically grayscale, volumetric (3D), and exhibit high heterogeneity across different scanners and protocols.</li>
 
-Complex Anatomical Boundaries: Multi-organ segmentation requires precise delineation of subtle and complex interfaces (e.g., the pancreas-duodenum boundary).
+<li><u>Complex Anatomical Boundaries:</u> Multi-organ segmentation requires precise delineation of subtle and complex interfaces (e.g., the pancreas-duodenum boundary).</li>
 
-Topological Constraints: Preserving the correct anatomical topology—preventing holes or disconnections in structures—is crucial for clinical validity.
-
+<li><u>Topological Constraints:</u> Preserving the correct anatomical topology—preventing holes or disconnections in structures—is crucial for clinical validity.</li>
+</ul>
 We propose a zero-shot pipeline that adapts promptable ViTs for multi-organ segmentation without any organ-specific training. Our method converts weak anatomical priors—derived from atlas registration and simple image heuristics—into automatic prompts. To address the lack of 3D context in standard 2D ViTs, we introduce a 2.5D input by stacking adjacent slices, providing the model with local volumetric cues. Finally, we assemble the 2D segmentations into a 3D volume and apply topology-aware and boundary-aware refinement to ensure anatomical plausibility and consistency. This training-free approach aims to reduce the reliance on large, annotated datasets while maintaining robust performance.
 
 <img width="2000" height="1458" alt="image" src="https://github.com/user-attachments/assets/a6ad4f82-3bf8-4303-adf0-e4ad5677cfbf" />
