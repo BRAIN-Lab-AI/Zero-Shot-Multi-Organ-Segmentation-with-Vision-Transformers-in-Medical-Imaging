@@ -15,7 +15,7 @@
 
 <li><u><strong>Complex Anatomical Boundaries:</strong></u> Multi-organ segmentation requires precise delineation of subtle and complex interfaces (e.g., the pancreas-duodenum boundary).</li>
 
-<li><u><strong>Topological Constraints:</strong>strong></u> Preserving the correct anatomical topology—preventing holes or disconnections in structures—is crucial for clinical validity.</li>
+<li><u><strong>Topological Constraints:</strong></u> Preserving the correct anatomical topology—preventing holes or disconnections in structures—is crucial for clinical validity.</li>
 </ul>
 We propose a <strong>zero-shot pipeline</strong> that adapts promptable ViTs for multi-organ segmentation without any organ-specific training. Our method converts weak anatomical priors—derived from atlas registration and simple image heuristics—into <strong>automatic prompts</strong>. To address the lack of 3D context in standard 2D ViTs, we introduce a <strong>2.5D input</strong> by stacking adjacent slices, providing the model with local volumetric cues. Finally, we assemble the 2D segmentations into a 3D volume and apply <strong>topology-aware and boundary-aware refinement</strong> to ensure anatomical plausibility and consistency. This training-free approach aims to reduce the reliance on large, annotated datasets while maintaining robust performance.
 <div align="justify">  </div>
@@ -37,13 +37,13 @@ The goal of this project is to achieve accurate multi-organ segmentation in abdo
 
 ## Application Area and Project Domain
 This work is situated in the domain of medical image analysis, specifically targeting multi-organ segmentation in abdominal computed tomography (CT) and magnetic resonance imaging (MRI) scans. The primary clinical and research applications include:
+<ul>
+<li><u><strong>Surgical Planning and Navigation:</strong> Precise 3D models of organs like the liver and kidneys are critical for pre-operative planning and intra-operative guidance, helping to define resection margins and avoid critical structures.</li>
 
-Surgical Planning and Navigation: Precise 3D models of organs like the liver and kidneys are critical for pre-operative planning and intra-operative guidance, helping to define resection margins and avoid critical structures.
+<li><u><strong>Disease Quantification and Follow-up:</strong> Accurate segmentation enables the volumetric measurement of organs for tracking tumor growth, assessing treatment response, and monitoring chronic conditions over time.</li>
 
-Disease Quantification and Follow-up: Accurate segmentation enables the volumetric measurement of organs for tracking tumor growth, assessing treatment response, and monitoring chronic conditions over time.
-
-Automated Dataset Curation: The pipeline can rapidly generate preliminary segmentations for new datasets, significantly reducing the manual annotation burden required to train and validate fully supervised models.
-
+<li><u><strong>Automated Dataset Curation:</strong> The pipeline can rapidly generate preliminary segmentations for new datasets, significantly reducing the manual annotation burden required to train and validate fully supervised models.</li>
+</ul>
 A robust, zero-shot method offers a key advantage: generalization across diverse clinical sites with varying imaging protocols without requiring retraining. Furthermore, by incorporating calibration and uncertainty estimation, the pipeline supports a human-in-the-loop workflow by automatically flagging low-confidence slices for expert review, ensuring reliability in critical clinical decision-making.
 
 <img width="2037" height="1254" alt="image" src="https://github.com/user-attachments/assets/588388b0-a501-49eb-9cdc-f00bd7ee2bb5" />
