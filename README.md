@@ -45,9 +45,10 @@ This work is situated in the domain of medical image analysis, specifically targ
 <li><u><strong>Automated Dataset Curation:</strong> The pipeline can rapidly generate preliminary segmentations for new datasets, significantly reducing the manual annotation burden required to train and validate fully supervised models.</li>
 </ul>
 A robust, zero-shot method offers a key advantage: generalization across diverse clinical sites with varying imaging protocols without requiring retraining. Furthermore, by incorporating calibration and uncertainty estimation, the pipeline supports a human-in-the-loop workflow by automatically flagging low-confidence slices for expert review, ensuring reliability in critical clinical decision-making.
-
-<img width="2037" height="1254" alt="image" src="https://github.com/user-attachments/assets/588388b0-a501-49eb-9cdc-f00bd7ee2bb5" />
 <div align="justify">  </div>
+   
+<img width="2037" height="1254" alt="image" src="https://github.com/user-attachments/assets/588388b0-a501-49eb-9cdc-f00bd7ee2bb5" />
+
 <div align="justify">
 
 ## What is the paper trying to do, and what are you planning to do?
