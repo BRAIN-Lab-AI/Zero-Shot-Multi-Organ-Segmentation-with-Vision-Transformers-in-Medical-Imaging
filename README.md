@@ -2,13 +2,20 @@
 
 ## Project Metadata
 ### Authors
-- **Team:** Name1, Namw2
+- **Team:** Nuren Nafisa(g202427580)
 - **Supervisor Name:** Dr. Muzammil Behzad
 - **Affiliations:** SABIC, ARAMCO and KFUPM (write your institution name, and/or KFUPM)
 
 ## Introduction
-Write 1-2 technical paragraphs (feel free to add images if you would like).
+Foundation models like the Segment Anything Model (SAM) have introduced powerful, class-agnostic segmentation using Vision Transformers (ViTs). These models can generate high-quality masks from simple prompts (e.g., a point or bounding box) without any task-specific training. However, directly applying these models to medical imaging presents significant challenges. Medical images, such as abdominal CT and MRI scans, are characterized by several factors that complicate segmentation:
 
+Complex Data Properties: The images are typically grayscale, volumetric (3D), and exhibit high heterogeneity across different scanners and protocols.
+
+Complex Anatomical Boundaries: Multi-organ segmentation requires precise delineation of subtle and complex interfaces (e.g., the pancreas-duodenum boundary).
+
+Topological Constraints: Preserving the correct anatomical topology—preventing holes or disconnections in structures—is crucial for clinical validity.
+
+We propose a zero-shot pipeline that adapts promptable ViTs for multi-organ segmentation without any organ-specific training. Our method converts weak anatomical priors—derived from atlas registration and simple image heuristics—into automatic prompts. To address the lack of 3D context in standard 2D ViTs, we introduce a 2.5D input by stacking adjacent slices, providing the model with local volumetric cues. Finally, we assemble the 2D segmentations into a 3D volume and apply topology-aware and boundary-aware refinement to ensure anatomical plausibility and consistency. This training-free approach aims to reduce the reliance on large, annotated datasets while maintaining robust performance.
 ## Problem Statement
 Write 1-2 technical paragraphs (feel free to add images if you would like).
 
