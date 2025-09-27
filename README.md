@@ -52,7 +52,7 @@ A robust, zero-shot method offers a key advantage: generalization across diverse
 <div align="justify">
 
 ## What is the paper trying to do, and what are you planning to do?
-<strong>What the paper does:</strong>
+<strong>What the paper does:(Paper Link-https://www.nature.com/articles/s41467-024-44824-z#Sec19</strong>
 
 <strong>Summary of the Baseline Paper (What it does):</strong>
 
