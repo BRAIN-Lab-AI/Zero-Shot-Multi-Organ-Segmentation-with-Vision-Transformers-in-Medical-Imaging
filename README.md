@@ -52,7 +52,7 @@ A robust, zero-shot method offers a key advantage: generalization across diverse
 <div align="justify">
 
 ## What is the paper trying to do, and what are you planning to do?
-<strong>What the paper does:(Paper Link-https://www.nature.com/articles/s41467-024-44824-z#Sec19)</strong>
+<strong><ins>What the paper does:(Paper Link-https://www.nature.com/articles/s41467-024-44824-z#Sec19)</ins></strong>
 
 <strong>Summary of the Baseline Paper:</strong>
 
@@ -68,7 +68,7 @@ A robust, zero-shot method offers a key advantage: generalization across diverse
 
 <li><u><strong>Shows reduced reliability on thin/branching structures and small organs due to the absence of topological constraints.</strong></u></li>
 </ul>
-<strong>What we will do:</strong>
+<strong><ins></ins>What we will do:<ins></strong>
 We will enhance this baseline into a complete zero-shot multi-organ segmentation pipeline through three key, reproducible enhancements:
 
 <strong>Enhancement 1:</strong> Automatic Prompt Generation
