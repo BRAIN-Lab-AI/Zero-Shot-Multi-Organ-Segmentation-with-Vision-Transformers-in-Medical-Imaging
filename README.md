@@ -4,7 +4,7 @@
 ### Authors
 - **Team:** Nuren Nafisa(g202427580)
 - **Supervisor Name:** Dr. Muzammil Behzad
-- **Affiliations:** KFUPM 
+- **Affiliations:** King Fahd University of Petroleum and Minerals(KFUPM) 
 <div align="justify">
 
 ## Introduction
