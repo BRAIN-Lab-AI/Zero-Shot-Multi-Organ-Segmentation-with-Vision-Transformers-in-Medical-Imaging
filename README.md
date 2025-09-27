@@ -73,7 +73,7 @@ We will enhance this baseline into a complete zero-shot multi-organ segmentation
 
 <strong>Enhancement 1:</strong> Automatic Prompt Generation
 <ul>
-<li><u><strong>Replace manual prompts with atlas-guided search windows to locate organs.</strong></u><li>
+<li><u><strong>Replace manual prompts with atlas-guided search windows to locate organs.</strong></u></li>
 
 <li><u><strong>Apply CT/MR-specific heuristics (e.g., HU thresholding, connected components analysis) to generate candidate bounding boxes or points.</strong></u></li>
 
