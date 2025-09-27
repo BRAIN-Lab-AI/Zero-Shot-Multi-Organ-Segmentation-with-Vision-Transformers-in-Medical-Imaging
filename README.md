@@ -54,7 +54,7 @@ A robust, zero-shot method offers a key advantage: generalization across diverse
 ## What is the paper trying to do, and what are you planning to do?
 <strong>What the paper does:(Paper Link-https://www.nature.com/articles/s41467-024-44824-z#Sec19)</strong>
 
-<strong>Summary of the Baseline Paper (What it does):</strong>
+<strong>Summary of the Baseline Paper:</strong>
 
 <strong>Core Function:</strong> Adapts a promptable Vision Transformer (ViT) for medical image segmentation.
 
