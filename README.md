@@ -1,4 +1,4 @@
-# Zero-Shot-Multi-Organ-Segmentation-with-Vision-Transformers-in-Medical-Imaging
+# MedSAM++: Automated Multi-Organ Segmentation with Atlas-Guided Prompting, 2.5D Context, and Volumetric Refinement
 
 ## Project Metadata
 ### Authors
@@ -8,8 +8,8 @@
 <div align="justify">
 
 ## Introduction
-<strong>Foundation models</strong> like the Segment Anything Model (SAM) have introduced powerful, <strong>class-agnostic</strong> segmentation using <strong>Vision Transformers (ViTs)</strong>. These models can generate high-quality masks from simple prompts (e.g., a point or bounding box) without any task-specific training. However, directly applying these models to medical imaging presents significant challenges. Medical images, such as abdominal CT and MRI scans, are characterized by several factors that complicate segmentation:
-
+<strong>Foundation models</strong> like the Segment Anything Model (SAM) have revolutionized computer vision through <strong>promptable, class-agnostic</strong> segmentation. However, their direct application to medical imaging is hindered by a domain gap: standard SAM lacks 3D spatial awareness, relies on manual prompts which are unscalable for volumetric data, and often struggles with low-contrast boundaries typical of soft tissue organs. While MedSAM attempted to bridge this gap, it remains a 2D-slice-based model that requires significant computational resources to fine-tune.
+However, directly applying these models to medical imaging presents significant challenges. Medical images, such as abdominal CT and MRI scans, are characterized by several factors that complicate segmentation:
 <ul>
 <li><u><strong>Complex Data Properties:</strong></u> The images are typically grayscale, volumetric (3D), and exhibit high heterogeneity across different scanners and protocols.</li>
 
@@ -17,7 +17,8 @@
 
 <li><u><strong>Topological Constraints:</strong></u> Preserving the correct anatomical topology—preventing holes or disconnections in structures—is crucial for clinical validity.</li>
 </ul>
-We propose a <strong>zero-shot pipeline</strong> that adapts promptable ViTs for multi-organ segmentation without any organ-specific training. Our method converts weak anatomical priors—derived from atlas registration and simple image heuristics—into <strong>automatic prompts</strong>. To address the lack of 3D context in standard 2D ViTs, we introduce a <strong>2.5D input</strong> by stacking adjacent slices, providing the model with local volumetric cues. Finally, we assemble the 2D segmentations into a 3D volume and apply <strong>topology-aware and boundary-aware refinement</strong> to ensure anatomical plausibility and consistency. This training-free approach aims to reduce the reliance on large, annotated datasets while maintaining robust performance.
+We propose a fully  <strong>automated, resource-efficient </strong> pipeline that adapts MedSAM for 3D abdominal CT segmentation. Our approach introduces  <strong>Parameter-Efficient Fine-Tuning (PEFT) </strong> via  <strong>Low-Rank Adaptation (LoRA) </strong>, enabling high-performance adaptation on consumer hardware. We further enhance the model with  <strong>2.5D context </strong>integration and a novel Boundary-Aware Combo Loss to improve segmentation precision. Finally, we replace manual interaction with an Automatic Prompt Generator, creating a true "click-free" segmentation tool.
+
 <div align="justify">  </div>
 <img width="2000" height="1458" alt="image" src="https://github.com/user-attachments/assets/a6ad4f82-3bf8-4303-adf0-e4ad5677cfbf" />
 
