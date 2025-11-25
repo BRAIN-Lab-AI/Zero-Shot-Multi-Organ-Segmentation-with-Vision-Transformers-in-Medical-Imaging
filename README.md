@@ -64,43 +64,63 @@ A robust, automated method offers a key advantage: generalization across diverse
 
 <strong>Summary of the Baseline Paper:</strong>
 
-<strong>Core Function:</strong> Adapts a promptable Vision Transformer (ViT) for medical image segmentation.
+<strong>Core Function:</strong> MedSAM  adapts a promptable Vision Transformer (ViT) for medical image segmentation. It adapts the Segment Anything Model (SAM) for medical images by fine-tuning the mask decoder while keeping the massive image encoder frozen.
 
-<strong>Key Strength:</strong>Produces high-quality, class-agnostic 2D masks from simple user-provided prompts (points or bounding boxes).
+
+<strong>Key Strength:</strong>Produces It generalizes well to unseen medical tasks when provided with a valid prompt (bounding box), achieving a "one-model-fits-all" capability.
 
 <strong>Primary Limitations:</strong>
 <ul>
 <li><u><strong>Relies on manual or simulated prompts, which is not scalable for full-volume segmentation.</strong></u></li>
 
-<li><u><strong>Processes each slice independently, leading to a lack of 3D consistency and slice-to-slice flickering.</strong></u></li>
+<li><u><strong>2D Slice Independence, as processes every slice in isolation, ignoring the 3D volumetric context, which leads to "flickering" predictions and inconsistent organ shapes.</strong></u></li>
 
-<li><u><strong>Shows reduced reliability on thin/branching structures and small organs due to the absence of topological constraints.</strong></u></li>
+<li><u><strong>Boundary Ambiguity, as it struggles with low-contrast boundaries (like the pancreas) because standard losses prioritize volume overlap over edge alignment.</strong></u></li>
 </ul>
-<strong><ins>What we will do:</ins></strong>
-We will enhance this baseline into a complete zero-shot multi-organ segmentation pipeline through three key, reproducible enhancements:
+\<strong\>\<ins\>What we will do:\</ins\>\</strong\>
+We will enhance the baseline MedSAM into a fully automated, high-precision pipeline through five key technical contributions, re-ordered to follow the data flow pipeline:
 
-<strong>Enhancement 1:</strong> Automatic Prompt Generation
-<ul>
-<li><u><strong>Replace manual prompts with atlas-guided search windows to locate organs.</strong></u></li>
+\<strong\>Enhancement 1:\</strong\> 2.5D Context Integration (Input Preprocessing)
 
-<li><u><strong>Apply CT/MR-specific heuristics (e.g., HU thresholding, connected components analysis) to generate candidate bounding boxes or points.</strong></u></li>
+\<ul\>
+\<li\>\<u\>\<strong\>Modify the input pipeline to construct a 2.5D stack of k neighboring slices (e.g., previous, current, and next).\</strong\>\</u\>\</li\>
 
-<li><u><strong>Implement label-free filtering based on size, location, and intensity consistency.</strong></u></li>
-</ul>
-<strong>Enhancement 2:</strong> Incorporation of 2.5D Context
-<ul>
-<li><u><strong>Stack k neighboring slices as input channels to the ViT encoder.</strong></u></li>
+\<li\>\<u\>\<strong\>Feed this multi-slice stack as input to the model's encoder.\</strong\>\</u\>\</li\>
 
-<li><u><strong>Provide local volumetric cues to the model without changing the core architecture.</strong></u></li>
+\<li\>\<u\>\<strong\>Provide the model with local volumetric cues and depth information to improve organ distinction and reduce inter-slice inconsistencies.\</strong\>\</u\>\</li\>
+\</ul\>
+\<strong\>Enhancement 2:\</strong\> Automated Prompt Generator (Automation Before Encoding)
+\<ul\>
+\<li\>\<u\>\<strong\>Develop a heuristic-based algorithm to automatically detect target organs within the CT slices.\</strong\>\</u\>\</li\>
 
-<li><u><strong>Aim to improve boundary decisions and reduce inter-slice inconsistencies.</strong></u></li>
-</ul>
-<strong>Enhancement 3:</strong> 3D Assembly and Refinement
-<ul>
-<li><u><strong>Link 2D slice masks into coherent 3D volumes using inter-slice tracking (e.g., IoU-based).</strong></u></li>
+\<li\>\<u\>\<strong\>Apply anatomical priors such as Hounsfield Unit (HU) thresholds, organ size constraints, and aspect ratios to identify candidate regions.\</strong\>\</u\>\</li\>
 
-<li><u><strong>Apply post-processing refinement (e.g., morphological operations, boundary smoothing) to ensure anatomical plausibility and sharp edges.</strong></u></li>
-</ul>
+\<li\>\<u\>\<strong\>Generate accurate bounding box prompts from these regions, eliminating the need for manual human intervention.\</strong\>\</u\>\</li\>
+\</ul\>
+\<strong\>Enhancement 3:\</strong\> Parameter-Efficient Architecture (LoRA) (Architecture Modification)
+\<ul\>
+\<li\>\<u\>\<strong\>Inject trainable Low-Rank Adaptation (LoRA) layers into the Multi-Head Attention blocks of the Vision Transformer.\</strong\>\</u\>\</li\>
+
+\<li\>\<u\>\<strong\>Freeze the original massive encoder parameters to minimize computational requirements.\</strong\>\</u\>\</li\>
+
+\<li\>\<u\>\<strong\>Train only the small LoRA layers (updating less than 1% of total parameters) to adapt the model to medical-specific features on standard GPUs.\</strong\>\</u\>\</li\>
+\</ul\>
+\<strong\>Enhancement 4:\</strong\> Boundary-Aware Combo Loss (Training Objective)
+\<ul\>
+\<li\>\<u\>\<strong\>Replace standard loss functions with a specialized ComboLoss: $0.4 \times \text{Dice} + 0.4 \times \text{Focal} + 0.2 \times \text{Boundary}$.\</strong\>\</u\>\</li\>
+
+\<li\>\<u\>\<strong\>Incorporate Focal Loss to address class imbalance for smaller or harder-to-segment organs.\</strong\>\</u\>\</li\>
+
+\<li\>\<u\>\<strong\>Integrate a Laplacian Boundary Loss to explicitly penalize edge errors, forcing the model to generate sharper and more anatomically accurate contours.\</strong\>\</u\>\</li\>
+\</ul\>
+\<strong\>Enhancement 5:\</strong\> 3D Assembly & Refinement (Post-Processing)
+\<ul\>
+\<li\>\<u\>\<strong\>Assemble the slice-by-slice 2D predictions into a coherent 3D volume.\</strong\>\</u\>\</li\>
+
+\<li\>\<u\>\<strong\>Apply 3D morphological smoothing and connected components analysis.\</strong\>\</u\>\</li\>
+
+\<li\>\<u\>\<strong\>Refine the final 3D output to remove noise, fill gaps, and ensure topological consistency across the organ volume.\</strong\>\</u\>\</li\>
+\</ul\>
 <strong>Evaluation Plan:</strong>
 
 <strong>Quantitative Metrics:</strong> Dice Similarity Coefficient (Dice), Normalized Surface Dice (NSD), Average Surface Distance (ASD), 95th percentile Hausdorff Distance (95HD).
