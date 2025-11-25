@@ -42,15 +42,17 @@ li><u><strong>Problem 4:</u> Lack of 3D Context.</strong> Standard MedSAM proces
 <div align="justify">
 
 ## Application Area and Project Domain
-This work is situated in the domain of medical image analysis, specifically targeting multi-organ segmentation in abdominal computed tomography (CT) and magnetic resonance imaging (MRI) scans. The primary clinical and research applications include:
+This work is situated in the domain of medical image analysis, specifically targeting :<strong>automated multi-organ segmentation:</strong> in abdominal computed tomography (CT) scans. The primary clinical and research applications include:
 <ul>
-<li><u><strong>Surgical Planning and Navigation:</strong></u> Precise 3D models of organs like the liver and kidneys are critical for pre-operative planning and intra-operative guidance, helping to define resection margins and avoid critical structures.</li>
+<li><u><strong>Automated Volumetric Screening:</strong></u> The pipeline enables rapid, hands-free quantification of organ volumes (liver, kidneys, spleen) from CT scans. This allows for scalable population-level screening and monitoring of organ health without requiring time-consuming manual intervention by radiologists.</li>
 
-<li><u><strong>Disease Quantification and Follow-up:</strong></u> Accurate segmentation enables the volumetric measurement of organs for tracking tumor growth, assessing treatment response, and monitoring chronic conditions over time.</li>
+<li><u><strong>Surgical Planning and Navigation:</strong></u> By enforcing boundary precision through advanced loss functions, our model generates accurate 3D anatomical maps. These are critical for pre-operative planning, helping surgeons define resection margins and visualize spatial relationships between organs.
+</li>
 
-<li><u><strong>Automated Dataset Curation:</strong></u> The pipeline can rapidly generate preliminary segmentations for new datasets, significantly reducing the manual annotation burden required to train and validate fully supervised models.</li>
+<li><u><strong>Efficient AI Development (Democratization):</strong></u> A key contribution of this project is enabling high-performance medical segmentation on consumer-grade hardware. By employing Parameter-Efficient Fine-Tuning (PEFT) techniques, we demonstrate that powerful foundation models can be adapted for clinical tasks using a single GPU, removing the barrier of requiring massive computing clusters.
+</li>
 </ul>
-A robust, zero-shot method offers a key advantage: generalization across diverse clinical sites with varying imaging protocols without requiring retraining. Furthermore, by incorporating calibration and uncertainty estimation, the pipeline supports a human-in-the-loop workflow by automatically flagging low-confidence slices for expert review, ensuring reliability in critical clinical decision-making.
+A robust, automated method offers a key advantage: generalization across diverse clinical sites with varying imaging protocols with less computation. Furthermore, by incorporating calibration and uncertainty estimation, the pipeline supports a human-in-the-loop workflow by automatically flagging low-confidence slices for expert review, ensuring reliability in critical clinical decision-making.
 <div align="justify">  </div>
    
 <img width="2037" height="1254" alt="image" src="https://github.com/user-attachments/assets/588388b0-a501-49eb-9cdc-f00bd7ee2bb5" />
