@@ -132,7 +132,7 @@ We will enhance the baseline MedSAM into a fully automated, high-precision pipel
 # THE FOLLOWING IS SUPPOSED TO BE DONE LATER
 
 ### Project Documents
-- **Presentation:** [Project Presentation](/presentation.pptx)
+- **Presentation:** https://www.canva.com/design/DAG5tj86bco/hTplydMhVNfimRQs8zebZg/edit?utm_content=DAG5tj86bco&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 - **Report:** [Project Report](/report.pdf)
 
 ### Reference Paper
