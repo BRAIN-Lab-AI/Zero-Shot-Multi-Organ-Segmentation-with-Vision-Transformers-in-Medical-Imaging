@@ -77,7 +77,7 @@ A robust, automated method offers a key advantage: generalization across diverse
 
 <li><u><strong>Boundary Ambiguity, as it struggles with low-contrast boundaries (like the pancreas) because standard losses prioritize volume overlap over edge alignment.</strong></u></li>
 </ul>
-\<strong\>\<ins\>What we will do:\</ins\>\</strong\>
+<strong\>\<ins\>What we will do:\</ins\>\</strong\>
 We will enhance the baseline MedSAM into a fully automated, high-precision pipeline through five key technical contributions, re-ordered to follow the data flow pipeline:
 
 \<strong\>Enhancement 1:\</strong\> 2.5D Context Integration (Input Preprocessing)
