@@ -17,7 +17,7 @@ However, directly applying these models to medical imaging presents significant 
 
 <li><u><strong>Topological Constraints:</strong></u> Preserving the correct anatomical topology—preventing holes or disconnections in structures—is crucial for clinical validity.</li>
 </ul>
-We propose a fully  <strong>automated, resource-efficient </strong> pipeline that adapts MedSAM for 3D abdominal CT segmentation. Our approach introduces  <strong>Parameter-Efficient Fine-Tuning (PEFT) </strong> via  <strong>Low-Rank Adaptation (LoRA) </strong>, enabling high-performance adaptation on consumer hardware. We further enhance the model with  <strong>2.5D context </strong>integration and a novel Boundary-Aware Combo Loss to improve segmentation precision. Finally, we replace manual interaction with an Automatic Prompt Generator, creating a true "click-free" segmentation tool.
+We propose a fully  <strong>automated, resource-efficient </strong> pipeline that adapts MedSAM for 3D abdominal CT segmentation. Our approach introduces  <strong>Parameter-Efficient Fine-Tuning (PEFT) </strong> via  <strong>Low-Rank Adaptation (LoRA) </strong>, enabling high-performance adaptation on consumer hardware. We further enhance the model with  <strong>2.5D context </strong>integration and a <strong>novel Boundary-Aware Combo Loss</strong> to improve segmentation precision. Finally, we replace manual interaction with an <strong>Automatic Prompt Generator</strong>, creating a true <strong>"click-free" segmentation tool.</strong>
 
 <div align="justify">  </div>
 <img width="2000" height="1458" alt="image" src="https://github.com/user-attachments/assets/a6ad4f82-3bf8-4303-adf0-e4ad5677cfbf" />
