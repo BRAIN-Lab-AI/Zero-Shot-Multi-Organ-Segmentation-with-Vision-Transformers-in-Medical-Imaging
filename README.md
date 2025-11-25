@@ -8,7 +8,7 @@
 <div align="justify">
 
 ## Introduction
-<strong>Foundation models</strong> like the Segment Anything Model (SAM) have revolutionized computer vision through <strong>promptable, class-agnostic</strong> segmentation. However, their direct application to medical imaging is hindered by a domain gap: standard SAM lacks 3D spatial awareness, relies on manual prompts which are unscalable for volumetric data, and often struggles with low-contrast boundaries typical of soft tissue organs. While MedSAM attempted to bridge this gap, it remains a 2D-slice-based model that requires significant computational resources to fine-tune.
+<strong>Foundation models</strong> like the Segment Anything Model (SAM) have revolutionized computer vision through <strong>promptable, class-agnostic</strong> segmentation. However, their direct application to medical imaging is hindered by a domain gap: standard SAM lacks <strong>3D spatial awareness</strong>, relies on manual prompts which are unscalable for <strong>volumetric data</strong>, and often struggles with <strong>low-contrast boundaries</strong> typical of soft tissue organs. While MedSAM attempted to bridge this gap, it remains a <strong>2D-slice-based model</strong> that requires significant <strong>computational resources</strong> to fine-tune.
 However, directly applying these models to medical imaging presents significant challenges. Medical images, such as abdominal CT and MRI scans, are characterized by several factors that complicate segmentation:
 <ul>
 <li><u><strong>Complex Data Properties:</strong></u> The images are typically grayscale, volumetric (3D), and exhibit high heterogeneity across different scanners and protocols.</li>
