@@ -27,15 +27,15 @@ We propose a fully  <strong>automated, resource-efficient </strong> pipeline tha
 ## Problem Statement
 The goal of this project is to achieve accurate multi-organ segmentation in abdominal CT scans while overcoming four critical limitations of current foundation models  <strong>MedSAM </strong>:
 <ul>
-<li><u><strong>Problem 1:</u> The Fine-Tuning Bottleneck:</strong> Retraining massive Vision Transformers (ViT-B has 90M+ parameters) requires A100 clusters. Freezing the model limits learning, while full fine-tuning leads to overfitting on small medical datasets.
+<li><u><strong>Problem 1:</u> The Fine-Tuning Bottleneck.</strong> Retraining massive Vision Transformers (ViT-B has 90M+ parameters) requires A100 clusters. Freezing the model limits learning, while full fine-tuning leads to overfitting on small medical datasets.
 </li>
 
-<li><u><strong>Problem 2:</u>Boundary Ambiguity:</strong> Standard losses (like Dice) focus on global volume overlap but often fail to capture sharp, irregular boundaries for small organs (e.g., pancreas), leading to over-smoothed or "blobby" predictions.</li>
+<li><u><strong>Problem 2:</u>Boundary Ambiguity.</strong> Standard losses (like Dice) focus on global volume overlap but often fail to capture sharp, irregular boundaries for small organs (e.g., pancreas), leading to over-smoothed or "blobby" predictions.</li>
 
-<li><u><strong>Problem 3:</u> The "Human-in-the-Loop" Requirement:</strong> Standard MedSAM is interactive, requiring a human to draw a box for every single slice. This is impractical for clinical workflows involving 3D volumes with hundreds of slices.
+<li><u><strong>Problem 3:</u> The "Human-in-the-Loop" Requirement.</strong> Standard MedSAM is interactive, requiring a human to draw a box for every single slice. This is impractical for clinical workflows involving 3D volumes with hundreds of slices.
 </li>
 
-li><u><strong>Problem 4:</u> Lack of 3D Context:</strong> Standard MedSAM processes images slice-by-slice, ignoring the volumetric relationship between adjacent slices, leading to "flickering" and inconsistent 3D shapes.
+li><u><strong>Problem 4:</u> Lack of 3D Context.</strong> Standard MedSAM processes images slice-by-slice, ignoring the volumetric relationship between adjacent slices, leading to "flickering" and inconsistent 3D shapes.
 </li>
 </ul>
 <div align="justify">  </div>
