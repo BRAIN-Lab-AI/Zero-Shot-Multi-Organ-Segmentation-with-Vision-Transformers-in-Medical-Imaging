@@ -122,7 +122,11 @@ We will enhance the baseline MedSAM into a fully automated, high-precision pipel
 </ul>
 <strong>Evaluation Plan:</strong>
 
-<strong>Quantitative Metrics:</strong> Dice Similarity Coefficient (Dice), Normalized Surface Dice (NSD), Average Surface Distance (ASD), 95th percentile Hausdorff Distance (95HD).
+<strong>Quantitative Metrics:</strong> 
+Dice Similarity Coefficient (DSC): Measures volume overlap.
+Normalized Surface Dice (NSD): Measures boundary accuracy (critical for surgery).
+Comparison: Baseline MedSAM vs. Improved MedSAM vs. Specialist U-Net.
+
 
 <strong>Qualitative Analysis:</strong> Mask overlays, 3D surface renderings, zoom-ins on complex boundaries, and visualizations of failure cases.
 
