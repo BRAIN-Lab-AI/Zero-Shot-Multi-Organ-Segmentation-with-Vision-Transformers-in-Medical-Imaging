@@ -35,7 +35,7 @@ The goal of this project is to achieve accurate multi-organ segmentation in abdo
 <li><u><strong>Problem 3:</u> The "Human-in-the-Loop" Requirement.</strong> Standard MedSAM is interactive, requiring a human to draw a box for every single slice. This is impractical for clinical workflows involving 3D volumes with hundreds of slices.
 </li>
 
-li><u><strong>Problem 4:</u> Lack of 3D Context.</strong> Standard MedSAM processes images slice-by-slice, ignoring the volumetric relationship between adjacent slices, leading to "flickering" and inconsistent 3D shapes.
+<li><u><strong>Problem 4:</u> Lack of 3D Context.</strong> Standard MedSAM processes images slice-by-slice, ignoring the volumetric relationship between adjacent slices, leading to "flickering" and inconsistent 3D shapes.
 </li>
 </ul>
 <div align="justify">  </div>
