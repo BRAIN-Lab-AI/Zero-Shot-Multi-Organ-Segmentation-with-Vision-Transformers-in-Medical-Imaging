@@ -182,19 +182,16 @@ We will enhance the baseline MedSAM into a fully automated, high-precision pipel
 - **Problem 4:**  Processing images slice-by-slice ignores volumetric context, leading to inconsistent 3D shapes and slice-to-slice "flickering.
 
 ### Loopholes or Research Areas
-- **Evaluation Metrics:** Lack of robust metrics to effectively assess the quality of generated images.
-### Loopholes or Research Areas
 - **Heuristic Prompting Limitations:** The atlas-guided prompt generator relies on fixed rules and HU thresholds, which may fail with atypical anatomies, post-surgical changes, or unusual organ morphologies, creating a need for learned prompt proposal networks.
 - **Limited 3D Context:** The 2.5D tri-slice input only captures short-range spatial context, lacking long-range volumetric reasoning and potentially struggling with globally inconsistent shapes across a full 3D volume.
 - **Boundary Loss Sensitivity:** The Laplacian boundary loss can be sensitive to annotation noise and tolerance parameter choices, potentially amplifying errors from imperfect ground truth labels.
+- **Hounsfield Unit (HU) Thresholding:** A preprocessing technique that clips CT intensity values to specific ranges to enhance contrast for abdominal organs.
 - **Domain Shift Vulnerability:** Despite improved generalization, performance may still degrade significantly across different scanner manufacturers, imaging protocols, or patient populations not seen during training.
 - **Computational and Data Efficiency:** While LoRA reduces parameters, the ViT backbone remains large, and the model's data hunger for small organ segmentation (e.g., pancreas) persists, highlighting needs in few-shot and self-supervised learning.
 - **Post-Processing Dependence:** The reliance on morphological post-processing (e.g., connected components) indicates the core model may still produce fragmented outputs, suggesting underlying segmentation coherence issues.
 - **Clinical Integration Gap:** The pipeline lacks quality assurance (QA) mechanisms and uncertainty estimation, which are critical for real-world clinical deployment and trust.
 - **Limited Pathology Handling:** The model is primarily designed and tested on healthy organ anatomy, leaving its performance on pathological cases (e.g., tumors, lesions) largely unverified.
 
-### Problem vs. Ideation: Proposed 6 Ideas to Solve the Problems
-1. **Optimized Architecture:** Redesign the model architecture to improve efficiency and balance image quality with faster inference.
 ### Problem vs. Ideation: Proposed Ideas to Solve the Problems
 
 1.  **Parameter-Efficient Fine-Tuning via LoRA:** Address the fine-tuning bottleneck by integrating Low-Rank Adaptation (LoRA) into the ViT encoder, updating <1% of parameters to enable effective adaptation on single GPU systems while preventing overfitting.
@@ -213,10 +210,24 @@ This repository provides an implementation of the enhanced MedSAM++ pipeline usi
 - **Volumetric Post-Processing:** Implements 3D connected-component filtering, hole-filling, and morphological closing operations to transform 2D slice predictions into topologically consistent 3D organ masks.
 
 ### Key Components
-- **`model.py`**: Contains the modified UNet architecture and other model components.
-- **`train.py`**: Script to handle the training process with configurable parameters.
-- **`utils.py`**: Utility functions for data processing, augmentation, and metric evaluations.
-- **`inference.py`**: Script for generating images using the trained model.
+
+##Core Components
+- **pre_CT_MR_split.py**- Data preprocessing and train/val/test split with HU windowing
+
+- **train_unet.py**- Specialist U-Net baseline training with BasicUNet architecture
+
+- **train_one_gpu_frozen.py**- MedSAM baseline training with frozen ViT encoder
+
+- **train_one_gpu_unfrozen.py**- MedSAM baseline training with partially unfrozen encoder
+
+- **unfrozen_Improved-ulta_na.py**- Main MedSAM++ training with 2.5D context and LoRA
+
+##Evaluation & Visualization
+- **2_BaseLine_and_U-net_Evaluation(Quantitative).py**- Baseline model evaluation (Dice/NSD)
+
+- **2_Improved_Evaluation(Quantitative).py**- MedSAM++ comprehensive validation
+
+- **Qualitative_Result.py**- 2D error maps and 3D surface rendering
 
 ## Model Workflow
 The workflow of the Enhanced Stable Diffusion model is designed to translate textual descriptions into high-quality artistic images through a multi-step diffusion process:
@@ -224,16 +235,7 @@ The workflow of the Enhanced Stable Diffusion model is designed to translate tex
 1. **Input:**
    - **Text Prompt:** The model takes a text prompt (e.g., "A surreal landscape with mountains and rivers") as the primary input.
    - **Tokenization:** The text prompt is tokenized and processed through a text encoder (such as a CLIP model) to obtain meaningful embeddings.
-   - **Latent Noise:** A random latent noise vector is generated to initialize the diffusion process, which is then conditioned on the text embeddings.
-
-2. **Diffusion Process:**
-   - **Iterative Refinement:** The conditioned latent vector is fed into a modified UNet architecture. The model iteratively refines this vector by reversing a diffusion process, gradually reducing noise while preserving the text-conditioned features.
-   - **Intermediate States:** At each step, intermediate latent representations are produced that increasingly capture the structure and details dictated by the text prompt.
-
-3. **Output:**
-   - **Decoding:** The final refined latent representation is passed through a decoder (often part of a Variational Autoencoder setup) to generate the final image.
-   - **Generated Image:** The output is a synthesized image that visually represents the input text prompt, complete with artistic style and detail.
-
+   - **Latent Noise:** A random latent noise vector is generated to initialize the diffusion process, which is then conditioned on the text embeddings**T
 ## How to Run the Code
 
 1. **Clone the Repository:**
