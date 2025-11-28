@@ -80,7 +80,7 @@ A robust, automated method offers a key advantage: generalization across diverse
 <strong\>What we will do:</strong>
 We will enhance the baseline MedSAM into a fully automated, high-precision pipeline through five key technical contributions, re-ordered to follow the data flow pipeline:
 
-<strong>Enhancement 1:\</strong> 2.5D Context Integration (Input Preprocessing)
+<strong>Enhancement 1:</strong> 2.5D Context Integration (Input Preprocessing)
 
 <ul>
 <li>\<u><strong\>Modify the input pipeline to construct a 2.5D stack of k neighboring slices (e.g., previous, current, and next).</strong></u></li>
