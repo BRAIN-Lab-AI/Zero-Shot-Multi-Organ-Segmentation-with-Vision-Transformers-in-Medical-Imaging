@@ -60,7 +60,7 @@ A robust, automated method offers a key advantage: generalization across diverse
 <div align="justify">
 
 ## What is the paper trying to do, and what are you planning to do?
-<strong><ins>What the paper does:</ins>(Paper Link-https://www.nature.com/articles/s41467-024-44824-z#Sec19)</strong>
+<strong><ins>What the paper does:</ins></strong>
 
 <strong>Summary of the Baseline Paper:</strong>
 
@@ -139,10 +139,10 @@ Comparison: Baseline MedSAM vs. Improved MedSAM vs. Specialist U-Net.
 - **Report:** [Project Report](/report.pdf)
 
 ### Reference Paper
-- [High-Resolution Image Synthesis with Latent Diffusion Models](https://arxiv.org/abs/2112.10752)
+- [Segment anything in medical images](https://www.nature.com/articles/s41467-024-44824-z#Sec19)
 
 ### Reference Dataset
-- [LAION-5B Dataset](https://laion.ai/blog/laion-5b/)
+- [MICCAI FLARE22 Challenge Dataset (50 Labeled Abdomen CT Scans)](https://zenodo.org/records/7860267)
 
 
 ## Project Technicalities
