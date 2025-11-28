@@ -123,19 +123,30 @@ We will enhance the baseline MedSAM into a fully automated, high-precision pipel
 <strong>Evaluation Plan:</strong>
 
 <strong>Quantitative Metrics:</strong> 
-Dice Similarity Coefficient (DSC): Measures volume overlap.
-Normalized Surface Dice (NSD): Measures boundary accuracy (critical for surgery).
-Comparison: Baseline MedSAM vs. Improved MedSAM vs. Specialist U-Net.
+<ul>
+<li><u><strong>Dice Similarity Coefficient (DSC): Measures volume overlap.</strong></u></li>
+<li><u><strong>Normalized Surface Dice (NSD): Measures boundary accuracy (critical for surgery).</strong></u></li>
+<li><u><strong>Comparison: Baseline MedSAM vs. Improved MedSAM vs. Specialist U-Net.</strong></u></li>
+</ul>
 
 
-<strong>Qualitative Analysis:</strong> Mask overlays, 3D surface renderings, zoom-ins on complex boundaries, and visualizations of failure cases.
+<strong>Qualitative Analysis:</strong>
+<ul>
+<li><u><strong>Side-by-side visualization of predictions.</strong></u></li>
+<li><u><strong>Error maps (Green/Red/Blue) showing leakage and missed regions.</strong></u></li>
+</ul>
 
-<strong>Zero-Shot Protocol:</strong> A strict separation where no organ labels are used for training or prompt generation; labels are used exclusively for evaluation.
+<strong>Validation Strategy:</strong>
+<ul>
+<li><u><strong>Internal: FLARE22 Test Set (5 held-out scans).</strong></u></li>
+<li><u><strong>External: AMOS Dataset (Zero-shot transfer to new data/scanner).</strong></u></li>
+
 
 <div align="justify">  </div>
-# THE FOLLOWING IS SUPPOSED TO BE DONE LATER
 
 ### Project 
+- **Presentation Slide:** [Presentation Slide](/report.pdf)
+- 
 - **Report:** [Project Report](/report.pdf)
 
 ### Reference Paper
