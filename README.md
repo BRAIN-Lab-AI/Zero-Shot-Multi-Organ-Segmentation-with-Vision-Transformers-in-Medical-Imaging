@@ -268,7 +268,7 @@ The workflow of the Enhanced Stable Diffusion model is designed to translate tex
   ```
    3. MedSAM Baselines
    ```bash
-     # Frozen encoder
+    
      python train_one_gpu_frozen.py \
         -tr_npy_path data/npy/CT_Abd/train \
         -val_npy_path data/npy/CT_Abd/val \
