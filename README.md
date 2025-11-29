@@ -216,8 +216,8 @@ This repository provides an implementation of the enhanced MedSAM++ pipeline usi
 - **train_unet.py**- Specialist U-Net baseline training with BasicUNet architecture
 - **train_one_gpu_frozen.py**- MedSAM baseline training with frozen ViT encoder
 - **train_one_gpu_unfrozen.py**- MedSAM baseline training with partially unfrozen encoder
-- **unfrozen_Improved-ulta_na.py**- Main MedSAM++ training with 2.5D context and LoRA
-- 
+- **frozen_Improved**- Main MedSAM++ training with 2.5D context, automatic bounding box but encoder frozen 
+- **unfrozen_Improved**- Main MedSAM++ training with 2.5D context, automatic bounding box and LoRA
 <strong>Evaluation & Visualization</strong>
 - **2_BaseLine_and_U-net_Evaluation(Quantitative).py**- Baseline model evaluation (Dice/NSD)
 - **2_Improved_Evaluation(Quantitative).py**- MedSAM++ comprehensive validation
@@ -297,8 +297,21 @@ The workflow of the Enhanced Stable Diffusion model is designed to translate tex
      -num_epochs 60 \
      -batch_size 4
     ```
+4. **Evaluation:**
+   ```bash
+   #Quantitative Analysis
+   # Baseline models
+   python 2_BaseLine_and_U-net_Evaluation(Quantitative).py
 
+   # MedSAM++ models  
+   python 2_Improved_Evaluation(Quantitative).py
+   #Qualitative Results
+   # Generate error maps and 3D renders
+   python Qualitative_Result.py
+   ```
+   
 ## Acknowledgments
-- **Open-Source Communities:** Thanks to the contributors of PyTorch, Hugging Face, and other libraries for their amazing work.
-- **Individuals:** Special thanks to bla, bla, bla for the amazing team effort, invaluable guidance and support throughout this project.
-- **Resource Providers:** Gratitude to ABC-organization for providing the computational resources necessary for this project.
+- **Open-Source Communities:** We extend our gratitude to the contributors of PyTorch, MONAI, Segment Anything Model (SAM), and the broader open-source community for their invaluable tools and libraries that made this research possible.
+- **Research Teams:** Special thanks to the MedSAM team for their foundational work, and to the organizers of the FLARE22 and AMOS challenges for providing the benchmark datasets that enabled rigorous evaluation of our methods.
+- **Computational Resources:** This research was conducted by Google Colab Pro Plus, which provided the computational infrastructure necessary for training and evaluating our vision transformer models.
+- **Academic Support:** We sincerely thank our research supervisor, Dr. Muzammil Behzad, for his invaluable guidance, mentorship, and support throughout this project.
