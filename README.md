@@ -257,63 +257,39 @@ The workflow of the Enhanced Stable Diffusion model is designed to translate tex
     1. Download Pre-trained Weights
    ```bash
     mkdir -p work_dir/SAM
-   ```
-   2. Specialist U-Net Baseline
-   ```bash
+
+   #2. Specialist U-Net Baseline
       python train_unet.py \
      -tr_npy_path data/npy/CT_Abd/train \
      -val_npy_path data/npy/CT_Abd/val \
      -num_epochs 60 \
      -batch_size 4
-  ```
-  2. Specialist U-Net Baseline
-   ```bash
-      python train_unet.py \
-     -tr_npy_path data/npy/CT_Abd/train \
-     -val_npy_path data/npy/CT_Abd/val \
-     -num_epochs 60 \
-     -batch_size 4
-  ```
-  3. MedSAM Baselines
-  ```bash
+  
+  #3. MedSAM Baselines
+     # Frozen encoder  
      python train_one_gpu_frozen.py \
       -tr_npy_path data/npy/CT_Abd/train \
       -val_npy_path data/npy/CT_Abd/val \
       -checkpoint work_dir/SAM/sam_vit_b_01ec64.pth\
       -num_epochs 60 \
       -batch_size 4
-  ```
-   3. MedSAM Baselines
-   ```bash
-   python train_one_gpu_frozen.py \
-      -tr_npy_path data/npy/CT_Abd/train \
-         -val_npy_path data/npy/CT_Abd/val \
-         -checkpoint work_dir/SAM/sam_vit_b_01ec64.pth\
-         -num_epochs 60 \
-         -batch_size 4
-    ```
-    ```bash
+
     # Partially unfrozen encoder  
      python train_one_gpu_unfrozen.py \
         -tr_npy_path data/npy/CT_Abd/train \
         -val_npy_path data/npy/CT_Abd/val \
         -checkpoint work_dir/SAM/sam_vit_b_01ec64.pth
         -num_epochs 60 \
-        -batch_size 4
-    ```
-
-
-    4. MedSAM++ (Enhanced)
-    Once training is complete, use the inference script to generate images.
-    ```bash
+  
+    #4. MedSAM++ (Enhanced)
+  
       # Frozen encoder
       python unfrozen_Improved.py \
          -tr_npy_path data/npy/CT_Abd/train \
         -val_npy_path data/npy/CT_Abd/val \
         -num_epochs 60 \
         -batch_size 4
-       ```
-   ```bash
+    
    # Partially unfrozen encoder  
    python frozen_Improved.py \
      -tr_npy_path data/npy/CT_Abd/train \
