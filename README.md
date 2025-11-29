@@ -266,26 +266,26 @@ The workflow of the Enhanced Stable Diffusion model is designed to translate tex
      -num_epochs 60 \
      -batch_size 4
   ```
-    3. MedSAM Baselines
+   3. MedSAM Baselines
    ```bash
-  # Frozen encoder
-  python train_one_gpu_frozen.py \
-     -tr_npy_path data/npy/CT_Abd/train \
-     -val_npy_path data/npy/CT_Abd/val \
-     -checkpoint work_dir/SAM/sam_vit_b_01ec64.pth
-     -num_epochs 60 \
-     -batch_size 4
-```
-  ```bash
- # Partially unfrozen encoder  
-  python train_one_gpu_unfrozen.py \
-     -tr_npy_path data/npy/CT_Abd/train \
-     -val_npy_path data/npy/CT_Abd/val \
-     -checkpoint work_dir/SAM/sam_vit_b_01ec64.pth
-     -num_epochs 60 \
-     -batch_size 4
-```
-```bash
+     # Frozen encoder
+     python train_one_gpu_frozen.py \
+        -tr_npy_path data/npy/CT_Abd/train \
+        -val_npy_path data/npy/CT_Abd/val \
+        -checkpoint work_dir/SAM/sam_vit_b_01ec64.pth
+        -num_epochs 60 \
+        -batch_size 4
+    ```
+    ```bash
+    # Partially unfrozen encoder  
+     python train_one_gpu_unfrozen.py \
+        -tr_npy_path data/npy/CT_Abd/train \
+        -val_npy_path data/npy/CT_Abd/val \
+        -checkpoint work_dir/SAM/sam_vit_b_01ec64.pth
+        -num_epochs 60 \
+        -batch_size 4
+    ```
+
 
 4. MedSAM++ (Enhanced)
     Once training is complete, use the inference script to generate images.
