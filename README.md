@@ -211,31 +211,26 @@ This repository provides an implementation of the enhanced MedSAM++ pipeline usi
 
 ### Key Components
 
-##Core Components
+<strong>Core Components</strong>
 - **pre_CT_MR_split.py**- Data preprocessing and train/val/test split with HU windowing
-
 - **train_unet.py**- Specialist U-Net baseline training with BasicUNet architecture
-
 - **train_one_gpu_frozen.py**- MedSAM baseline training with frozen ViT encoder
-
 - **train_one_gpu_unfrozen.py**- MedSAM baseline training with partially unfrozen encoder
-
 - **unfrozen_Improved-ulta_na.py**- Main MedSAM++ training with 2.5D context and LoRA
-
-##Evaluation & Visualization
+<strong>Evaluation & Visualization</strong>
 - **2_BaseLine_and_U-net_Evaluation(Quantitative).py**- Baseline model evaluation (Dice/NSD)
-
 - **2_Improved_Evaluation(Quantitative).py**- MedSAM++ comprehensive validation
-
 - **Qualitative_Result.py**- 2D error maps and 3D surface rendering
 
 ## Model Workflow
 The workflow of the Enhanced Stable Diffusion model is designed to translate textual descriptions into high-quality artistic images through a multi-step diffusion process:
 
-1. **Input:**
-   - **Text Prompt:** The model takes a text prompt (e.g., "A surreal landscape with mountains and rivers") as the primary input.
-   - **Tokenization:** The text prompt is tokenized and processed through a text encoder (such as a CLIP model) to obtain meaningful embeddings.
-   - **Latent Noise:** A random latent noise vector is generated to initialize the diffusion process, which is then conditioned on the text embeddings**T
+- **Input:** Raw CT Volume → Preprocessing (Windowing/Resizing).
+- **Context:** Extract 2.5D slice stacks.
+- **Prompt:** Auto-generator scans slice → Bounding Box.
+- **Inference:** MedSAM (with LoRA) predicts 2D mask.
+- **Assembly:** Stack 2D masks → 3D Volume → Morphological Refinement → Final Output.
+
 ## How to Run the Code
 
 1. **Clone the Repository:**
