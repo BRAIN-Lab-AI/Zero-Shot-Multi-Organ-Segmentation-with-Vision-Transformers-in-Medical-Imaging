@@ -275,7 +275,8 @@ The workflow of the Enhanced Stable Diffusion model is designed to translate tex
      -checkpoint work_dir/SAM/sam_vit_b_01ec64.pth
      -num_epochs 60 \
      -batch_size 4
-  
+```
+  ```bash
  # Partially unfrozen encoder  
   python train_one_gpu_unfrozen.py \
      -tr_npy_path data/npy/CT_Abd/train \
