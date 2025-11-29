@@ -145,9 +145,9 @@ We will enhance the baseline MedSAM into a fully automated, high-precision pipel
 <div align="justify">  </div>
 
 ### Project 
-- **Presentation Slide:** [Presentation Slide](/report.pdf)
+- **Presentation Slide:** [Presentation Slide](Submissions/NN_DL_slide.pdf)
  
-- **Report:** [Project Report](/report.pdf)
+- **Report:** [Project Report](Submissions/report.pdf)
 
 ### Reference Paper
 - [Segment anything in medical images](https://www.nature.com/articles/s41467-024-44824-z#Sec19)
