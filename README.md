@@ -194,7 +194,7 @@ We will enhance the baseline MedSAM into a fully automated, high-precision pipel
 
 ### Problem vs. Ideation: Proposed Ideas to Solve the Problems
 
-1.  **Parameter-Efficient Fine-Tuning via LoRA:** Address the fine-tuning bottleneck by integrating Low-Rank Adaptation (LoRA) into the ViT encoder, updating <1% of parameters to enable effective adaptation on single GPU systems while preventing overfitting.
+1.  **Parameter-Efficient Fine-Tuning via LoRA:** Address the fine-tuning bottleneck by integrating Low-Rank Adaptation (LoRA) into the ViT encoder, updating 1% of parameters to enable effective adaptation on single GPU systems while preventing overfitting.
 2.  **Boundary-Aware Combo Loss:** Solve boundary ambiguity by combining Dice loss, Focal loss, and a novel Laplacian boundary term in a composite loss function that explicitly penalizes contour errors for sharper organ delineation.
 3.  **Atlas-Guided Automatic Prompt Generator:** Eliminate human-in-the-loop requirements by developing a rule-based module that generates bounding box prompts automatically using anatomical priors, HU thresholding, and morphological operations.
 4.  **2.5D Context Integration:** Overcome the lack of 3D context by processing tri-slice stacks [I₍ᵢ₋₁₎, Iᵢ, I₍ᵢ₊₁₎] as input to provide local volumetric information and improve inter-slice consistency.
